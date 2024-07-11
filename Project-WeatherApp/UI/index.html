@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    body{
+  margin: 0;
+  padding: 0;
+  background-color: aquamarine;
+}
+
+.box {
+  background-color: rgb(52, 174, 236);
+  width: 350px;
+  height: 450px;
+  border-radius: 30px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50% , -50%);
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.weather-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.fa-sun {
+  color: rgb(244, 210, 58);
+  font-size: 90px;
+  
+
+}
+
+
+
+.weather-data {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  justify-content: center;
+}
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Application</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <div class="box">
+    <div class="weather-image">
+      <i class="fa-solid fa-sun"></i>
+    </div>
+    <div class="weather-data">
+      <div class="location-div">
+        <h2 class="location"><span class="icon-image"><i class="fa-solid fa-location-dot"></i></span>{%cityname%},{%country%}</h2>
+        <p class="day-date-time">Wed | Oct 23 | 10:30 AM</p>
+      </div>
+      <div class="temperature-div">
+        <h1 class="temp">{%tempval%}</h1>
+        <p class="min-max-temp"></p>
+      </div>
+      
+    </div>
+  </div>
+
+
+  <script >
+    const date = new Date();
+
+const getcurrentDay = () => {
+  const weekday= ["Sun" , "Mon" , "Tue" , "Wed" , "Thu" , "Fri" , "Sat"];
+  let currentDay= weekday[date.getDay()];
+  return currentDay ;
+}
+
+
+const getCurrentTime = function() {
+
+  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nove", "Dec"];
+
+  let currentMonth = months[date.getMonth()];
+
+  let currentDate = date.getDate();
+  
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  
+  let periods = 'AM';
+  
+  if(hours > 11){
+    periods = 'PM';
+    if(hours > 12){
+      hours -= 12 ;
+    }
+  }
+  
+  
+  if(minutes < 10){
+    minutes = "0" + minutes;
+  }
+  console.log(hours + '|' + minutes);
+
+
+  // we are returning a string.
+  return ` | ${currentMonth} ${currentDate} | ${hours}:${minutes} ${periods}`
+  
+}
+
+
+document.querySelector('.day-date-time').innerHTML = getcurrentDay() +  getCurrentTime();
+  </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+body{
+  margin: 0;
+  padding: 0;
+  background-color: aquamarine;
+}
+
+.box {
+  background-color: rgb(52, 174, 236);
+  width: 350px;
+  height: 450px;
+  border-radius: 30px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50% , -50%);
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.weather-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.fa-sun {
+  color: rgb(244, 210, 58);
+  font-size: 90px;
+  
+
+}
+
+.fa-location-dot {
+ 
+}
+
+.weather-data {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  justify-content: center;
+}
